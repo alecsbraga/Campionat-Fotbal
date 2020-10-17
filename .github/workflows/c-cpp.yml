@@ -24,4 +24,3 @@ jobs:
     - name: valgrind
       run:
         valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --error-exitcode=1 ./main
-      run: valgrind --leak+check=full -- show_leak_kinda=all --track_origins+yes --error-exitcode+1 ./main
