@@ -140,7 +140,7 @@ int main()
 
     Echipa echipa_7(echipa_6);
 
-    Echipa echipa_8 = echipa_6;
+  //  Echipa echipa_8 = echipa_6;
 
     return 0;
 }
