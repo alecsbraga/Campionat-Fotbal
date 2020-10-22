@@ -1,11 +1,10 @@
 #include <iostream>
-#include <cstring>
 
 using namespace std;
 
 class Echipa
 {
-    char nume_echipa[30];
+    string nume_echipa;
     int nr_partide, nr_partide_castigate, nr_partide_egale, nr_partide_pierdute, punctaj;
 
 public:
@@ -20,26 +19,28 @@ public:
         cout<<nume_echipa<<" "<<nr_partide<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<punctaj<<'\n';
     }
 
+    ///Am redus numarul de constructori la unul folosind parametri impliciti
+   /*
     Echipa();
 
-    Echipa(const char []);
+   Echipa(string);
 
-    Echipa(const char [], int);
+   Echipa(string, int);
 
-    Echipa(const char [], int, int);
+   Echipa(string, int, int);
 
-    Echipa(const char [], int, int, int)
-    ;
-    Echipa(const char [], int, int, int, int);
+   Echipa(string, int, int, int);
+    */
+    Echipa(string nume_echipa = "noname", int nr_partide = 0, int nr_partide_castigate = 0, int nr_partide_egale = 0, int nr_partide_pierdute = 0);
 
     Echipa(Echipa &);
 
     ~Echipa();
 };
-
+/*
 Echipa::Echipa()
 {
-    strcpy(nume_echipa,"noname");
+    nume_echipa = "noname";
     nr_partide = 0;
     nr_partide_castigate = 0;
     nr_partide_egale = 0;
@@ -49,9 +50,9 @@ Echipa::Echipa()
 
 }
 
-Echipa::Echipa(const char nume_echipa[30])
+Echipa::Echipa(string nume_echipa)
 {
-    strcpy(this->nume_echipa, nume_echipa);
+    this->nume_echipa = nume_echipa;
     nr_partide = 0;
     nr_partide_castigate = 0;
     nr_partide_egale = 0;
@@ -60,9 +61,9 @@ Echipa::Echipa(const char nume_echipa[30])
     afisare_date();
 }
 
-Echipa::Echipa(const char nume_echipa[30], int nr_partide)
+Echipa::Echipa(string nume_echipa, int nr_partide)
 {
-    strcpy(this->nume_echipa, nume_echipa);
+    this->nume_echipa = nume_echipa;
     this->nr_partide = nr_partide;
     nr_partide_castigate = 0;
     nr_partide_egale = 0;
@@ -71,9 +72,9 @@ Echipa::Echipa(const char nume_echipa[30], int nr_partide)
     afisare_date();
 }
 
-Echipa::Echipa(const char nume_echipa[30], int nr_partide, int nr_partide_castigate)
+Echipa::Echipa(string nume_echipa, int nr_partide, int nr_partide_castigate)
 {
-    strcpy(this->nume_echipa, nume_echipa);
+    this->nume_echipa = nume_echipa;
     this->nr_partide = nr_partide;
     this->nr_partide_castigate = nr_partide_castigate;
     nr_partide_egale = 0;
@@ -82,9 +83,9 @@ Echipa::Echipa(const char nume_echipa[30], int nr_partide, int nr_partide_castig
     afisare_date();
 }
 
-Echipa::Echipa(const char nume_echipa[30], int nr_partide, int nr_partide_castigate, int nr_partide_egale)
+Echipa::Echipa(string nume_echipa, int nr_partide, int nr_partide_castigate, int nr_partide_egale)
 {
-    strcpy(this->nume_echipa, nume_echipa);
+    this->nume_echipa = nume_echipa;
     this->nr_partide = nr_partide;
     this->nr_partide_castigate = nr_partide_castigate;
     this->nr_partide_egale = nr_partide_egale;
@@ -92,10 +93,10 @@ Echipa::Echipa(const char nume_echipa[30], int nr_partide, int nr_partide_castig
     punctaj_calculat(nr_partide_castigate,nr_partide_egale);
     afisare_date();
 }
-
-Echipa::Echipa(const char nume_echipa[30], int nr_partide, int nr_partide_castigate, int nr_partide_egale, int nr_partide_pierdute)
+*/
+Echipa::Echipa(string nume_echipa, int nr_partide, int nr_partide_castigate, int nr_partide_egale, int nr_partide_pierdute)
 {
-    strcpy(this->nume_echipa, nume_echipa);
+    this->nume_echipa = nume_echipa;
     this->nr_partide = nr_partide;
     this->nr_partide_castigate = nr_partide_castigate;
     this->nr_partide_egale = nr_partide_egale;
@@ -107,7 +108,7 @@ Echipa::Echipa(const char nume_echipa[30], int nr_partide, int nr_partide_castig
 Echipa::Echipa(Echipa &echipa)
 {
     cout<<"Copie club: ";
-    strcpy(this->nume_echipa,echipa.nume_echipa);
+    this->nume_echipa = echipa.nume_echipa;
     this->nr_partide = echipa.nr_partide;
     this->nr_partide_castigate = echipa.nr_partide_castigate;
     this->nr_partide_egale = echipa.nr_partide_egale;
