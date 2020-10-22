@@ -138,7 +138,7 @@ int main()
 
     Echipa echipa_6("Astra Giurgiu",3,1,1,1);
 
-    Echipa echipa_7(echipa_6);
+ //   Echipa echipa_7(echipa_6);
 
   //  Echipa echipa_8 = echipa_6;
 
