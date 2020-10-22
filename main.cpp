@@ -117,6 +117,10 @@ Echipa::Echipa(Echipa &echipa)
     afisare_date();
 }
 
+Echipa::~Echipa()
+{
+    cout<<'\n'<<"Gata cu "<<nume_echipa;
+}
 
 int main()
 {
