@@ -5,22 +5,21 @@ using namespace std;
 class Echipa
 {
     string nume_echipa;
-    int nr_partide, nr_partide_castigate, nr_partide_egale, nr_partide_pierdute;
-    int *punctaj;
+    int nr_partide, nr_partide_castigate, nr_partide_egale, nr_partide_pierdute, punctaj;
 
 public:
 
     void punctaj_calculat(int nr_partide_castigate,int nr_partide_egale)
     {
-        punctaj= new int(nr_partide_castigate*3+nr_partide_egale);
+        punctaj=nr_partide_castigate*3+nr_partide_egale;
 
     }
     void afisare_date()
     {
-        cout<<nume_echipa<<" "<<nr_partide<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<*punctaj<<'\n';
+        cout<<nume_echipa<<" "<<nr_partide<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<punctaj<<'\n';
     }
 
-    ///Am redus numarul de constructori la unul folosind parametri impliciti
+    ///Am redus numarul de constructori la unul, folosind parametri impliciti
    /*
     Echipa();
 
@@ -32,7 +31,7 @@ public:
 
    Echipa(string, int, int, int);
     */
-    Echipa(string nume_echipa = "noname", int nr_partide = 0, int nr_partide_castigate = 0, int nr_partide_egale = 0, int nr_partide_pierdute = 0);
+    Echipa(const string nume_echipa = "noname",const int nr_partide = 0,const int nr_partide_castigate = 0,const int nr_partide_egale = 0,const int nr_partide_pierdute = 0);
 
     Echipa(Echipa &);
 
@@ -95,7 +94,7 @@ Echipa::Echipa(string nume_echipa, int nr_partide, int nr_partide_castigate, int
     afisare_date();
 }
 */
-Echipa::Echipa(string nume_echipa, int nr_partide, int nr_partide_castigate, int nr_partide_egale, int nr_partide_pierdute)
+Echipa::Echipa(const string nume_echipa,const int nr_partide,const int nr_partide_castigate,const int nr_partide_egale,const int nr_partide_pierdute)
 {
     this->nume_echipa = nume_echipa;
     this->nr_partide = nr_partide;
@@ -118,29 +117,20 @@ Echipa::Echipa(Echipa &echipa)
     afisare_date();
 }
 
-Echipa::~Echipa()
-{
-    delete punctaj;
-    cout<<'\n'<<"Gata cu "<<nume_echipa;
-}
 
 int main()
 {
-    Echipa echipa_1;
+    Echipa echipa_2("FCSB",4,3,1);
 
-    Echipa echipa_2("FCSB");
+    Echipa echipa_3("FC Dinamo Bucuresti",4,0,2,2);
 
-    Echipa echipa_3("FC Dinamo Bucuresti",1);
+    Echipa echipa_4("CFR Cluj",4,3,0,1);
 
-    Echipa echipa_4("CFR Cluj",2,2);
+    Echipa echipa_6("Astra Giurgiu",4,2,1);
 
-    Echipa echipa_5("CS U Craiova",3,1,2);
+   Echipa echipa_7(echipa_6);
 
-    Echipa echipa_6("Astra Giurgiu",3,1,1,1);
-
- //   Echipa echipa_7(echipa_6);
-
-  //  Echipa echipa_8 = echipa_6;
+    Echipa echipa_8 = echipa_6;
 
     return 0;
 }
