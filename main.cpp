@@ -5,18 +5,19 @@ using namespace std;
 class Echipa
 {
     string nume_echipa;
-    int nr_partide, nr_partide_castigate, nr_partide_egale, nr_partide_pierdute, punctaj;
+    int nr_partide, nr_partide_castigate, nr_partide_egale, nr_partide_pierdute;
+    int *punctaj;
 
 public:
 
     void punctaj_calculat(int nr_partide_castigate,int nr_partide_egale)
     {
-        punctaj=nr_partide_castigate*3+nr_partide_egale;
+        punctaj= new int(nr_partide_castigate*3+nr_partide_egale);
 
     }
     void afisare_date()
     {
-        cout<<nume_echipa<<" "<<nr_partide<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<punctaj<<'\n';
+        cout<<nume_echipa<<" "<<nr_partide<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<*punctaj<<'\n';
     }
 
     ///Am redus numarul de constructori la unul folosind parametri impliciti
@@ -119,6 +120,7 @@ Echipa::Echipa(Echipa &echipa)
 
 Echipa::~Echipa()
 {
+    delete punctaj;
     cout<<'\n'<<"Gata cu "<<nume_echipa;
 }
 
