@@ -6,19 +6,18 @@ using namespace std;
 class Echipa
 {
     char nume_echipa[30];
-    int nr_partide, nr_partide_castigate, nr_partide_egale, nr_partide_pierdute;
-    int *punctaj;
+    int nr_partide, nr_partide_castigate, nr_partide_egale, nr_partide_pierdute, punctaj;
 
 public:
 
     void punctaj_calculat(int nr_partide_castigate,int nr_partide_egale)
     {
-        punctaj= new int(nr_partide_castigate*3+nr_partide_egale);
+        punctaj=nr_partide_castigate*3+nr_partide_egale;
 
     }
     void afisare_date()
     {
-        cout<<nume_echipa<<" "<<nr_partide<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<*punctaj<<'\n';
+        cout<<nume_echipa<<" "<<nr_partide<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<punctaj<<'\n';
     }
 
     Echipa();
@@ -119,7 +118,6 @@ Echipa::Echipa(Echipa &echipa)
 
 Echipa::~Echipa()
 {
-    delete punctaj;
     cout<<'\n'<<"Gata cu "<<nume_echipa;
 }
 
@@ -135,7 +133,7 @@ int main()
 
     Echipa echipa_5("CS U Craiova",3,1,2);
 
-    Echipa echipa_6("Astra Giurgiu",3,0,0,3);
+    Echipa echipa_6("Astra Giurgiu",3,1,1,1);
 
     Echipa echipa_7(echipa_6);
 
