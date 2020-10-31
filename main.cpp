@@ -298,7 +298,11 @@ main()
     Echipa echipa_1("FCSB",4, 1);
     Echipa echipa_2("FC Dinamo Bucuresti",2, 2, 1);
     echipa_1.afisare_date();
+    delete echipa_1.nr_partide();
+    delete echipa_1.punctaj_calculat();
     echipa_2.afisare_date();
+    delete echipa_2.nr_partide();
+    delete echipa_2.punctaj_calculat();
     Patron patron_1("Gigi Becali", echipa_1);
     Patron patron_2("Pablo Cortacero", echipa_2);
     Stadion stadion_1("Ghencea",echipa_1);
