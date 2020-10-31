@@ -43,6 +43,8 @@ public:
     void afisare_date()
     {
         cout<<nume_echipa<<" "<<*nr_partide()<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<*punctaj_calculat()<<'\n';
+        delete nr_partide();
+        delete punctaj_calculat();
     }
     string get_nume()
     {
