@@ -139,6 +139,8 @@ Echipa::Echipa(Echipa &echipa)
     this->nr_partide_castigate = echipa.nr_partide_castigate;
     this->nr_partide_egale = echipa.nr_partide_egale;
     this->nr_partide_pierdute = echipa.nr_partide_pierdute;
+    delete nr_partide();
+    delete punctaj_calculat();
 
 }
 
@@ -158,6 +160,8 @@ public:
     {
         cout<<"Patron: "<<nume_patron<<" "<<", club: ";
         echipa.afisare_date();
+        delete echipa.nr_partide();
+        delete echipa.punctaj_calculat();
     }
     Patron(string nume_patron, Echipa echipa);
     ~Patron();
@@ -169,6 +173,8 @@ Patron::Patron(string nume_patron, Echipa echipa)
     this->nume_patron = nume_patron;
     this->echipa = echipa;
     afisare_date();
+    delete echipa.nr_partide();
+    delete echipa.punctaj_calculat();
 }
 
 Patron::~Patron()
@@ -188,6 +194,8 @@ public:
     {
         cout<<"Stadion: "<<nume_stadion<<" Gazda: ";
         echipa.afisare_date();
+        delete echipa.nr_partide();
+        delete echipa.punctaj_calculat();
 
     }
 
@@ -200,6 +208,8 @@ Stadion::Stadion(string nume_stadion,Echipa echipa)
 {
     this->nume_stadion = nume_stadion;
     this->echipa=echipa;
+    delete echipa.nr_partide();
+    delete echipa.punctaj_calculat();
 
 }
 
@@ -229,6 +239,10 @@ public:
             cout<<endl<<"Datele sunt urmatoarele:"<<endl;
             echipa_1.afisare_date();
             echipa_2.afisare_date();
+            delete echipa_1.nr_partide();
+            delete echipa_1.punctaj_calculat();
+            delete echipa_2.nr_partide();
+            delete echipa_2.punctaj_calculat();
 
         }
         else if(castiga == 2)
@@ -243,6 +257,10 @@ public:
             cout<<endl<<"Datele sunt urmatoarele:"<<endl;
             echipa_1.afisare_date();
             echipa_2.afisare_date();
+            delete echipa_1.nr_partide();
+            delete echipa_1.punctaj_calculat();
+            delete echipa_2.nr_partide();
+            delete echipa_2.punctaj_calculat();
         }
         else
         {
@@ -255,6 +273,10 @@ public:
             cout<<endl<<"Datele sunt urmatoarele:"<<endl;
             echipa_1.afisare_date();
             echipa_2.afisare_date();
+            delete echipa_1.nr_partide();
+            delete echipa_1.punctaj_calculat();
+            delete echipa_2.nr_partide();
+            delete echipa_2.punctaj_calculat();
         }
 
     }
