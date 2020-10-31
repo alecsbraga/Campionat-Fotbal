@@ -144,7 +144,9 @@ Echipa::Echipa(Echipa &echipa)
 
 Echipa::~Echipa()
 {
-  //  cout<<'\n'<<"Gata cu echipa "<<nume_echipa<<'\n';
+    //  cout<<'\n'<<"Gata cu echipa "<<nume_echipa<<'\n';
+    delete nr_partide();
+    delete punctaj_calculat();
 }
 
 class Patron
@@ -171,7 +173,9 @@ Patron::Patron(string nume_patron, Echipa echipa)
 
 Patron::~Patron()
 {
-   // cout<<"Gata cu patronul "<<nume_patron<<endl;
+    // cout<<"Gata cu patronul "<<nume_patron<<endl;
+    delete echipa.nr_partide();
+    delete echipa.punctaj_calculat();
 }
 
 class Stadion
@@ -201,13 +205,16 @@ Stadion::Stadion(string nume_stadion,Echipa echipa)
 
 Stadion::~Stadion()
 {
-   // cout<<"Gata cu stadionul " << nume_stadion;
+    // cout<<"Gata cu stadionul " << nume_stadion;
+    delete echipa.nr_partide();
+    delete echipa.punctaj_calculat();
 }
 
-class Meci{
+class Meci
+{
     Echipa echipa_1;
     Echipa echipa_2;
-    public:
+public:
     void meci(Echipa &echipa_1, Echipa &echipa_2)
     {
         int castiga= 1 + (rand() % ( 3 - 1 + 1 ) );
@@ -251,9 +258,18 @@ class Meci{
         }
 
     }
+    ~Meci();
 };
 
- main()
+Meci::~Meci()
+{
+    delete echipa_1.nr_partide();
+    delete echipa_1.punctaj_calculat();
+    delete echipa_2.nr_partide();
+    delete echipa_2.punctaj_calculat();
+}
+
+main()
 {
     Echipa echipa_1("FCSB",4, 1);
     Echipa echipa_2("FC Dinamo Bucuresti",2, 2, 1);
