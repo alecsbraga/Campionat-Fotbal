@@ -194,12 +194,12 @@ class Meci{
     Echipa echipa_1;
     Echipa echipa_2;
     public:
-    void cine_a_castigat(Echipa &castigatorea, Echipa &invinsa, bool remiza)
+    void cine_a_castigat(Echipa echipa_1, Echipa echipa_2, bool remiza)
     {
         if(remiza == false)
-            cout<<"In urma meciului dintre " <<castigatorea.get_nume()<<" si "<< invinsa.get_nume()<<", a castigat "<< castigatorea.get_nume();
+            cout<<"In urma meciului dintre " <<echipa_1.get_nume()<<" si "<< echipa_2.get_nume()<<", a castigat "<< echipa_1.get_nume();
         else
-            cout<<cout<<"In urma meciului dintre " <<castigatorea.get_nume()<<" si "<< invinsa.get_nume()<<", s-a terminat egal";
+            cout<<cout<<"In urma meciului dintre " <<echipa_1.get_nume()<<" si "<< echipa_2.get_nume()<<", s-a terminat egal";
     }
 
     void meci(Echipa &echipa_1, Echipa &echipa_2)
@@ -210,6 +210,7 @@ class Meci{
         {
             remiza= false;
             cine_a_castigat(echipa_1, echipa_2, remiza);
+            echipa_1.a_castigat_un_meci();
             echipa_2.a_pierdut_un_meci();
             cout<<endl<<"Datele sunt urmatoarele:"<<endl;
             echipa_1.afisare_date();
