@@ -181,22 +181,25 @@ Stadion::~Stadion()
     // cout<<"Gata cu stadionul " << nume_stadion;
 }
 
+void cine_a_castigat(Echipa castigatoare, Echipa pierzatoare, bool remiza)
+{
+    if(remiza == false)
+        cout<<"In urma meciului dintre " <<castigatoare.get_nume()<<" si "<< pierzatoare.get_nume()<<", a castigat "<< castigatoare.get_nume();
+    else
+        cout<<cout<<"In urma meciului dintre " <<castigatoare.get_nume()<<" si "<< pierzatoare.get_nume()<<", s-a terminat egal";
+    cout<<endl<<"Datele sunt urmatoarele:"<<endl;
+    castigatoare.afisare_date();
+    pierzatoare.afisare_date();
+    
+}
 class Meci
 {
     Echipa echipa_1;
     Echipa echipa_2;
 public:
+
     Meci(Echipa, Echipa);
-    void cine_a_castigat(Echipa castigatoare, Echipa pierzatoare, bool remiza)
-    {
-        if(remiza == false)
-            cout<<"In urma meciului dintre " <<castigatoare.get_nume()<<" si "<< pierzatoare.get_nume()<<", a castigat "<< castigatoare.get_nume();
-        else
-            cout<<cout<<"In urma meciului dintre " <<castigatoare.get_nume()<<" si "<< pierzatoare.get_nume()<<", s-a terminat egal";
-        cout<<endl<<"Datele sunt urmatoarele:"<<endl;
-        castigatoare.afisare_date();
-        pierzatoare.afisare_date();
-    }
+
     void meci()
     {
         int castiga= 1 + (rand() % ( 3 - 1 + 1 ) );
