@@ -11,7 +11,7 @@ class Echipa
 public:
     int nr_partide()
     {
-       return nr_partide_castigate+nr_partide_egale+nr_partide_pierdute;
+        return nr_partide_castigate+nr_partide_egale+nr_partide_pierdute;
     }
 
     void a_castigat_un_meci()
@@ -43,13 +43,9 @@ public:
     ///Am redus numarul de constructori la unul, folosind parametri impliciti
     /*
      Echipa();
-
     Echipa(string);
-
     Echipa(string, int);
-
     Echipa(string, int, int);
-
     Echipa(string, int, int, int);
      */
     Echipa(string nume_echipa = "noname", int nr_partide_castigate = 0, int nr_partide_egale = 0, int nr_partide_pierdute=0);
@@ -68,9 +64,7 @@ Echipa::Echipa()
     nr_partide_pierdute = 0;
     punctaj_calculat(nr_partide_castigate,nr_partide_egale);
     afisare_date();
-
 }
-
 Echipa::Echipa(string nume_echipa)
 {
     this->nume_echipa = nume_echipa;
@@ -81,7 +75,6 @@ Echipa::Echipa(string nume_echipa)
     punctaj_calculat(nr_partide_castigate,nr_partide_egale);
     afisare_date();
 }
-
 Echipa::Echipa(string nume_echipa, int nr_partide)
 {
     this->nume_echipa = nume_echipa;
@@ -92,7 +85,6 @@ Echipa::Echipa(string nume_echipa, int nr_partide)
     punctaj_calculat(nr_partide_castigate,nr_partide_egale);
     afisare_date();
 }
-
 Echipa::Echipa(string nume_echipa, int nr_partide, int nr_partide_castigate)
 {
     this->nume_echipa = nume_echipa;
@@ -103,7 +95,6 @@ Echipa::Echipa(string nume_echipa, int nr_partide, int nr_partide_castigate)
     punctaj_calculat(nr_partide_castigate,nr_partide_egale);
     afisare_date();
 }
-
 Echipa::Echipa(string nume_echipa, int nr_partide, int nr_partide_castigate, int nr_partide_egale)
 {
     this->nume_echipa = nume_echipa;
@@ -203,10 +194,11 @@ class Meci
     Echipa echipa_1;
     Echipa echipa_2;
 public:
+    Meci(Echipa, Echipa);
     void cine_a_castigat(Echipa castigatorea, Echipa invinsa, bool remiza)
     {
         if(remiza == false)
-        cout<<"In urma meciului dintre " <<castigatorea.get_nume()<<" si "<< invinsa.get_nume()<<", a castigta "<< castigatorea.get_nume();
+            cout<<"In urma meciului dintre " <<castigatorea.get_nume()<<" si "<< invinsa.get_nume()<<", a castigta "<< castigatorea.get_nume();
         else
             cout<<cout<<"In urma meciului dintre " <<castigatorea.get_nume()<<" si "<< invinsa.get_nume()<<", s-a terminat egal";
     }
@@ -256,6 +248,11 @@ public:
     }
     ~Meci();
 };
+Meci::Meci(Echipa echipa_1,Echipa echipa_2)
+{
+    this->echipa_1=echipa_1;
+    this->echipa_2=echipa_2;
+}
 
 Meci::~Meci()
 {
@@ -272,7 +269,7 @@ main()
     Patron patron_2("Pablo Cortacero", echipa_2);
     Stadion stadion_1("Ghencea",echipa_1);
     Stadion stadion_2("Stefan Cel Mare",echipa_2);
-    Meci meci_1;
+    Meci meci_1(echipa_1,echipa_2);
     meci_1.meci(echipa_1, echipa_2);
     return 0;
 }
