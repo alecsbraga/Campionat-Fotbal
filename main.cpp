@@ -194,7 +194,7 @@ class Meci{
     Echipa echipa_1;
     Echipa echipa_2;
     public:
-    void cine_a_castigat(Echipa castigatorea, Echipa invinsa, bool remiza)
+    void cine_a_castigat(Echipa &castigatorea, Echipa &invinsa, bool remiza)
     {
         if(remiza == false)
             cout<<"In urma meciului dintre " <<castigatorea.get_nume()<<" si "<< invinsa.get_nume()<<", a castigat "<< castigatorea.get_nume();
