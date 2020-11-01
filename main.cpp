@@ -194,11 +194,22 @@ class Meci{
     Echipa echipa_1;
     Echipa echipa_2;
     public:
+    void cine_a_castigat(Echipa castigatorea, Echipa invinsa, bool remiza)
+    {
+        if(remiza == false)
+            cout<<"In urma meciului dintre " <<castigatorea.get_nume()<<" si "<< invinsa.get_nume()<<", a castigat "<< castigatorea.get_nume();
+        else
+            cout<<cout<<"In urma meciului dintre " <<castigatorea.get_nume()<<" si "<< invinsa.get_nume()<<", s-a terminat egal";
+    }
+
     void meci(Echipa &echipa_1, Echipa &echipa_2)
     {
         int castiga= 1 + (rand() % ( 3 - 1 + 1 ) );
+        bool remiza;
         if(castiga == 1)
         {
+            remiza= false;
+            cine_a_castigat(echipa_1, echipa_2, remiza);
             cout<<"In urma meciului dintre " <<echipa_1.get_nume()<<" si "<< echipa_2.get_nume()<<", a castigta "<< echipa_1.get_nume();
             echipa_1.a_castigat_un_meci();
             echipa_2.a_pierdut_un_meci();
@@ -209,7 +220,8 @@ class Meci{
         }
         else if(castiga == 2)
         {
-            cout<<"In urma meciului dintre " <<echipa_1.get_nume()<<" si "<< echipa_2.get_nume()<<", s-a terminat egal";
+            remiza= true;
+            cine_a_castigat(echipa_1, echipa_2, remiza);
             echipa_1.a_facut_egal();
             echipa_2.a_facut_egal();
             cout<<endl<<"Datele sunt urmatoarele:"<<endl;
@@ -218,7 +230,8 @@ class Meci{
         }
         else
         {
-            cout<<"In urma meciului dintre " <<echipa_1.get_nume()<<" si "<< echipa_2.get_nume()<<", a castigat "<< echipa_2.get_nume();
+            remiza= false;
+            cine_a_castigat(echipa_2, echipa_1, remiza);
             echipa_2.a_castigat_un_meci();
             echipa_1.a_pierdut_un_meci();
             cout<<endl<<"Datele sunt urmatoarele:"<<endl;
