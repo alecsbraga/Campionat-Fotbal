@@ -31,9 +31,9 @@ public:
     {
         cout<<nume_echipa<<" "<<nr_partide_castigate+nr_partide_egale+nr_partide_pierdute<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<nr_partide_castigate*3+nr_partide_egale<<'\n';
     }
-    string get_nume()
+    void echipa_nume()
     {
-        return nume_echipa;
+        cout<<nume_echipa;
     }
     ///Am redus numarul de constructori la unul, folosind parametri impliciti
     /*
@@ -184,13 +184,26 @@ Stadion::~Stadion()
 void cine_a_castigat(Echipa castigatoare, Echipa pierzatoare, bool remiza)
 {
     if(remiza == false)
-        cout<<"In urma meciului dintre " <<castigatoare.get_nume()<<" si "<< pierzatoare.get_nume()<<", a castigat "<< castigatoare.get_nume();
+    {
+        cout<<"In urma meciului dintre " ;
+        castigatoare.echipa_nume();
+        cout<<" si ";
+        pierzatoare.echipa_nume();
+        cout<<", a castigat ";
+        castigatoare.echipa_nume();
+    }
     else
-        cout<<cout<<"In urma meciului dintre " <<castigatoare.get_nume()<<" si "<< pierzatoare.get_nume()<<", s-a terminat egal";
+    {
+        cout<<"In urma meciului dintre ";
+        castigatoare.echipa_nume();
+        cout<<" si ";
+        pierzatoare.echipa_nume();
+        cout<<", s-a terminat egal";
+    }
     cout<<endl<<"Datele sunt urmatoarele:"<<endl;
     castigatoare.afisare_date();
     pierzatoare.afisare_date();
-    
+
 }
 class Meci
 {
