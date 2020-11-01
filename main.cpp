@@ -205,13 +205,11 @@ class Meci{
     void meci(Echipa &echipa_1, Echipa &echipa_2)
     {
         int castiga= 1 + (rand() % ( 3 - 1 + 1 ) );
-        bool remiza;
+        static bool remiza;
         if(castiga == 1)
         {
             remiza= false;
             cine_a_castigat(echipa_1, echipa_2, remiza);
-            cout<<"In urma meciului dintre " <<echipa_1.get_nume()<<" si "<< echipa_2.get_nume()<<", a castigta "<< echipa_1.get_nume();
-            echipa_1.a_castigat_un_meci();
             echipa_2.a_pierdut_un_meci();
             cout<<endl<<"Datele sunt urmatoarele:"<<endl;
             echipa_1.afisare_date();
