@@ -27,18 +27,9 @@ public:
     {
         nr_partide_egale++;
     }
-    void punctaj_calculat()
-    {
-        cout<<nr_partide_castigate*3+nr_partide_egale;
-
-    }
     void afisare_date()
     {
-        cout<<nume_echipa<<" ";
-        partide();
-        cout<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" ";
-        punctaj_calculat();
-        cout<<'\n';
+        cout<<nume_echipa<<" "<<nr_partide_castigate+nr_partide_egale+nr_partide_pierdute<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<nr_partide_castigate*3+nr_partide_egale<<'\n';
     }
     string get_nume()
     {
@@ -130,7 +121,7 @@ Echipa::Echipa(Echipa &echipa)
 
 Echipa::~Echipa()
 {
-  //  cout<<'\n'<<"Gata cu echipa "<<nume_echipa<<'\n';
+    //  cout<<'\n'<<"Gata cu echipa "<<nume_echipa<<'\n';
 }
 
 class Patron
@@ -157,7 +148,7 @@ Patron::Patron(string nume_patron, Echipa echipa)
 
 Patron::~Patron()
 {
-   // cout<<"Gata cu patronul "<<nume_patron<<endl;
+    // cout<<"Gata cu patronul "<<nume_patron<<endl;
 }
 
 class Stadion
@@ -187,61 +178,57 @@ Stadion::Stadion(string nume_stadion,Echipa echipa)
 
 Stadion::~Stadion()
 {
-   // cout<<"Gata cu stadionul " << nume_stadion;
+    // cout<<"Gata cu stadionul " << nume_stadion;
 }
 
-class Meci{
+class Meci
+{
     Echipa echipa_1;
     Echipa echipa_2;
-    public:
-    void cine_a_castigat(Echipa echipa_1, Echipa echipa_2, bool remiza)
+public:
+    void cine_a_castigat(Echipa &echipa_1, Echipa &echipa_2, bool &remiza)
     {
         if(remiza == false)
             cout<<"In urma meciului dintre " <<echipa_1.get_nume()<<" si "<< echipa_2.get_nume()<<", a castigat "<< echipa_1.get_nume();
         else
             cout<<cout<<"In urma meciului dintre " <<echipa_1.get_nume()<<" si "<< echipa_2.get_nume()<<", s-a terminat egal";
+        cout<<endl<<"Datele sunt urmatoarele:"<<endl;
+        echipa_1.afisare_date();
+        echipa_2.afisare_date();
     }
 
     void meci(Echipa &echipa_1, Echipa &echipa_2)
     {
         int castiga= 1 + (rand() % ( 3 - 1 + 1 ) );
-        static bool remiza;
+        bool remiza;
         if(castiga == 1)
         {
             remiza= false;
-            cine_a_castigat(echipa_1, echipa_2, remiza);
             echipa_1.a_castigat_un_meci();
             echipa_2.a_pierdut_un_meci();
-            cout<<endl<<"Datele sunt urmatoarele:"<<endl;
-            echipa_1.afisare_date();
-            echipa_2.afisare_date();
+            cine_a_castigat(echipa_1, echipa_2, remiza);
 
         }
         else if(castiga == 2)
         {
             remiza= true;
-            cine_a_castigat(echipa_1, echipa_2, remiza);
             echipa_1.a_facut_egal();
             echipa_2.a_facut_egal();
-            cout<<endl<<"Datele sunt urmatoarele:"<<endl;
-            echipa_1.afisare_date();
-            echipa_2.afisare_date();
+            cine_a_castigat(echipa_1, echipa_2, remiza);
+
         }
         else
         {
             remiza= false;
-            cine_a_castigat(echipa_2, echipa_1, remiza);
             echipa_2.a_castigat_un_meci();
             echipa_1.a_pierdut_un_meci();
-            cout<<endl<<"Datele sunt urmatoarele:"<<endl;
-            echipa_1.afisare_date();
-            echipa_2.afisare_date();
+            cine_a_castigat(echipa_2, echipa_1, remiza);
         }
 
     }
 };
 
- main()
+main()
 {
     Echipa echipa_1("FCSB", 4, 1);
     Echipa echipa_2("FC Dinamo Bucuresti",2, 2, 1);
