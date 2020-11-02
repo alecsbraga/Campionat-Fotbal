@@ -45,7 +45,7 @@ public:
      */
     Echipa(string nume_echipa = "noname", int nr_partide_castigate = 0, int nr_partide_egale = 0, int nr_partide_pierdute = 0);
 
-    Echipa(Echipa &);
+    Echipa(Echipa &echipa);
 
     Echipa& operator=(const Echipa &echipa)
     {
@@ -173,7 +173,7 @@ public:
 
     }
 
-    Stadion(string, Echipa);
+    Stadion(string nume_stadion, Echipa echipa);
     ~Stadion();
 
 };
