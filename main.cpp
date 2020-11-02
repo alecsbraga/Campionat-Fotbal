@@ -9,10 +9,6 @@ class Echipa
     int nr_partide_castigate, nr_partide_egale, nr_partide_pierdute;
 
 public:
-    void partide()
-    {
-        cout<<nr_partide_castigate+nr_partide_egale+nr_partide_pierdute;
-    }
 
     void a_castigat_un_meci()
     {
@@ -23,18 +19,22 @@ public:
     {
         nr_partide_pierdute++;
     }
+
     void a_facut_egal()
     {
         nr_partide_egale++;
     }
+
     void afisare_date()
     {
         cout<<nume_echipa<<" "<<nr_partide_castigate+nr_partide_egale+nr_partide_pierdute<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<nr_partide_castigate*3+nr_partide_egale<<'\n';
     }
+
     void echipa_nume()
     {
         cout<<nume_echipa;
     }
+
     ///Am redus numarul de constructori la unul, folosind parametri impliciti
     /*
      Echipa();
@@ -219,7 +219,7 @@ public:
 
     Meci(Echipa, Echipa);
 
-    void meci(Echipa &echipa_1, Echipa &echipa_2)
+    void joaca()
     {
         int castiga= 1 + (rand() % ( 3 - 1 + 1 ) );
         bool remiza;
@@ -273,6 +273,6 @@ int main()
     Stadion stadion_1("Ghencea",echipa_1);
     Stadion stadion_2("Stefan Cel Mare",echipa_2);
     Meci meci_1(echipa_1,echipa_2);
-    meci_1.meci(echipa_1,echipa_2);
+    meci_1.joaca();
     return 0;
 }
