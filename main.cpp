@@ -47,6 +47,15 @@ public:
 
     Echipa(Echipa &);
 
+    Echipa& operator=(const Echipa &echipa)
+    {
+        nume_echipa=echipa.nume_echipa;
+        nr_partide_castigate=echipa.nr_partide_castigate;
+        nr_partide_egale=echipa.nr_partide_egale;
+        nr_partide_pierdute=echipa.nr_partide_pierdute;
+        return *this;
+    }
+
     ~Echipa();
 };
 /*
@@ -181,23 +190,20 @@ Stadion::~Stadion()
     // cout<<"Gata cu stadionul " << nume_stadion;
 }
 
-void cine_a_castigat(Echipa castigatoare, Echipa pierzatoare, bool remiza)
+void cine_a_castigat(Echipa &castigatoare, Echipa &pierzatoare, bool remiza)
 {
+    cout<<"In urma meciului dintre " ;
+    castigatoare.echipa_nume();
+    cout<<" si ";
+    pierzatoare.echipa_nume();
     if(remiza == false)
     {
-        cout<<"In urma meciului dintre " ;
-        castigatoare.echipa_nume();
-        cout<<" si ";
-        pierzatoare.echipa_nume();
         cout<<", a castigat ";
         castigatoare.echipa_nume();
     }
     else
     {
-        cout<<"In urma meciului dintre ";
-        castigatoare.echipa_nume();
-        cout<<" si ";
-        pierzatoare.echipa_nume();
+
         cout<<", s-a terminat egal";
     }
     cout<<endl<<"Datele sunt urmatoarele:"<<endl;
@@ -213,7 +219,7 @@ public:
 
     Meci(Echipa, Echipa);
 
-    void meci()
+    void meci(Echipa &echipa_1, Echipa &echipa_2)
     {
         int castiga= 1 + (rand() % ( 3 - 1 + 1 ) );
         bool remiza;
@@ -267,6 +273,6 @@ int main()
     Stadion stadion_1("Ghencea",echipa_1);
     Stadion stadion_2("Stefan Cel Mare",echipa_2);
     Meci meci_1(echipa_1,echipa_2);
-    meci_1.meci();
+    meci_1.meci(echipa_1,echipa_2);
     return 0;
 }
