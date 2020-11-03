@@ -43,7 +43,7 @@ public:
     Echipa(string, int, int);
     Echipa(string, int, int, int);
      */
-    Echipa(string nume_echipa = "noname", int nr_partide_castigate = 0, int nr_partide_egale = 0, int nr_partide_pierdute = 0)
+    Echipa(const string &nume_echipa = "noname", int nr_partide_castigate = 0, int nr_partide_egale = 0, int nr_partide_pierdute = 0)
     :nume_echipa{nume_echipa},
     nr_partide_castigate{nr_partide_castigate},
     nr_partide_egale{nr_partide_egale},
