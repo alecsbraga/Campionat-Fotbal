@@ -132,7 +132,7 @@ Echipa::~Echipa()
 
 class Patron
 {
-    string nume_patron;
+    const string nume_patron;
     Echipa echipa;
 public:
     void afisare_date()
@@ -140,7 +140,7 @@ public:
         cout<<"Patron: "<<nume_patron<<" "<<", club: ";
         echipa.afisare_date();
     }
-    Patron(string nume_patron, Echipa echipa)
+    Patron(const string &nume_patron, Echipa &echipa)
     :nume_patron{nume_patron},
     echipa{echipa}
     {
@@ -157,7 +157,7 @@ Patron::~Patron()
 
 class Stadion
 {
-    string nume_stadion;
+    const string nume_stadion;
     Echipa echipa;
 
 public:
@@ -168,7 +168,7 @@ public:
 
     }
 
-    Stadion(string nume_stadion, Echipa echipa)
+    Stadion(const string &nume_stadion, Echipa &echipa)
     :nume_stadion{nume_stadion},
     echipa{echipa}
     {
@@ -211,7 +211,7 @@ class Meci
     Echipa echipa_2;
 public:
 
-    Meci(Echipa echipa_1, Echipa echipa_2)
+    Meci(Echipa &echipa_1, Echipa &echipa_2)
     :echipa_1{echipa_1},
     echipa_2{echipa_2}
     {
