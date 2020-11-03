@@ -52,7 +52,14 @@ public:
 
     }
 
-    Echipa(Echipa &echipa);
+    Echipa(Echipa &echipa)
+    :nume_echipa{echipa.nume_echipa},
+    nr_partide_castigate{echipa.nr_partide_castigate},
+    nr_partide_egale{echipa.nr_partide_egale},
+    nr_partide_pierdute{echipa.nr_partide_pierdute}
+    {
+
+    }
 
     Echipa& operator=(const Echipa &echipa)
     {
@@ -118,15 +125,6 @@ Echipa::Echipa(string nume_echipa, int nr_partide, int nr_partide_castigate, int
 }
 */
 
-Echipa::Echipa(Echipa &echipa)
-{
-    this->nume_echipa = echipa.nume_echipa;
-    this->nr_partide_castigate = echipa.nr_partide_castigate;
-    this->nr_partide_egale = echipa.nr_partide_egale;
-    this->nr_partide_pierdute = echipa.nr_partide_pierdute;
-
-}
-
 Echipa::~Echipa()
 {
     //  cout<<'\n'<<"Gata cu echipa "<<nume_echipa<<'\n';
@@ -142,17 +140,15 @@ public:
         cout<<"Patron: "<<nume_patron<<" "<<", club: ";
         echipa.afisare_date();
     }
-    Patron(string nume_patron, Echipa echipa);
+    Patron(string nume_patron, Echipa echipa)
+    :nume_patron{nume_patron},
+    echipa{echipa}
+    {
+      afisare_date();
+    }
     ~Patron();
 
 };
-
-Patron::Patron(string nume_patron, Echipa echipa)
-{
-    this->nume_patron = nume_patron;
-    this->echipa = echipa;
-    afisare_date();
-}
 
 Patron::~Patron()
 {
@@ -167,22 +163,21 @@ class Stadion
 public:
     void afisare_date()
     {
-        cout<<"Stadion: "<<nume_stadion<<" Gazda: ";
+        cout<<"Stadion: "<<nume_stadion<<" Gazda: "<<endl;
         echipa.afisare_date();
 
     }
 
-    Stadion(string nume_stadion, Echipa echipa);
+    Stadion(string nume_stadion, Echipa echipa)
+    :nume_stadion{nume_stadion},
+    echipa{echipa}
+    {
+        afisare_date();
+    }
+
     ~Stadion();
 
 };
-
-Stadion::Stadion(string nume_stadion,Echipa echipa)
-{
-    this->nume_stadion = nume_stadion;
-    this->echipa=echipa;
-
-}
 
 Stadion::~Stadion()
 {
@@ -216,7 +211,12 @@ class Meci
     Echipa echipa_2;
 public:
 
-    Meci(Echipa, Echipa);
+    Meci(Echipa echipa_1, Echipa echipa_2)
+    :echipa_1{echipa_1},
+    echipa_2{echipa_2}
+    {
+
+    }
 
     void joaca()
     {
@@ -249,12 +249,6 @@ public:
     }
     ~Meci();
 };
-
-Meci::Meci(Echipa echipa_1, Echipa echipa_2)
-{
-    this->echipa_1=echipa_1;
-    this->echipa_2=echipa_2;
-}
 
 Meci::~Meci()
 {
