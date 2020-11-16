@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
 
 using namespace std;
 
@@ -26,30 +25,30 @@ public:
         nr_partide_egale++;
     }
 
-    const void afisare_date()
+    void afisare_date() const
     {
         cout<<nume_echipa<<" "<<nr_partide_castigate+nr_partide_egale+nr_partide_pierdute<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<nr_partide_castigate*3+nr_partide_egale<<'\n';
     }
 
-    const void echipa_nume()
+    void echipa_nume() const
     {
         cout<<nume_echipa;
     }
 
     Echipa(const string &nume_echipa = "noname", int nr_partide_castigate = 0, int nr_partide_egale = 0, int nr_partide_pierdute = 0)
-    :nume_echipa{nume_echipa},
-    nr_partide_castigate{nr_partide_castigate},
-    nr_partide_egale{nr_partide_egale},
-    nr_partide_pierdute{nr_partide_pierdute}
+        :nume_echipa{nume_echipa},
+         nr_partide_castigate{nr_partide_castigate},
+         nr_partide_egale{nr_partide_egale},
+         nr_partide_pierdute{nr_partide_pierdute}
     {
 
     }
 
     Echipa(Echipa &echipa)
-    :nume_echipa{echipa.nume_echipa},
-    nr_partide_castigate{echipa.nr_partide_castigate},
-    nr_partide_egale{echipa.nr_partide_egale},
-    nr_partide_pierdute{echipa.nr_partide_pierdute}
+        :nume_echipa{echipa.nume_echipa},
+         nr_partide_castigate{echipa.nr_partide_castigate},
+         nr_partide_egale{echipa.nr_partide_egale},
+         nr_partide_pierdute{echipa.nr_partide_pierdute}
     {
 
     }
@@ -81,10 +80,10 @@ public:
         echipa.afisare_date();
     }
     Patron(const string &nume_patron, Echipa &echipa)
-    :nume_patron{nume_patron},
-    echipa{echipa}
+        :nume_patron{nume_patron},
+         echipa{echipa}
     {
-      afisare_date();
+        afisare_date();
     }
     ~Patron();
 
@@ -109,8 +108,8 @@ public:
     }
 
     Stadion(const string &nume_stadion, Echipa &echipa)
-    :nume_stadion{nume_stadion},
-    echipa{echipa}
+        :nume_stadion{nume_stadion},
+         echipa{echipa}
     {
         afisare_date();
     }
@@ -152,13 +151,13 @@ class Meci
 public:
 
     Meci(Echipa &echipa_1, Echipa &echipa_2)
-    :echipa_1{echipa_1},
-    echipa_2{echipa_2}
+        :echipa_1{echipa_1},
+         echipa_2{echipa_2}
     {
 
     }
 
-    void joaca()
+    void joaca(int &v, int &e, int&i)
     {
 
         bool remiza;
@@ -170,6 +169,7 @@ public:
             echipa_1.a_castigat_un_meci();
             echipa_2.a_pierdut_un_meci();
             cine_a_castigat(echipa_1, echipa_2, remiza);
+            ++v;
 
         }
         else if(castiga == 2)
@@ -178,6 +178,7 @@ public:
             echipa_1.a_facut_egal();
             echipa_2.a_facut_egal();
             cine_a_castigat(echipa_1, echipa_2, remiza);
+            ++e;
 
         }
         else
@@ -186,6 +187,7 @@ public:
             echipa_2.a_castigat_un_meci();
             echipa_1.a_pierdut_un_meci();
             cine_a_castigat(echipa_2, echipa_1, remiza);
+            ++i;
         }
 
     }
@@ -209,12 +211,23 @@ int main()
     Patron patron_2("Pablo Cortacero", echipa_2);
     Stadion stadion_1("Ghencea",echipa_1);
     Stadion stadion_2("Stefan Cel Mare",echipa_2);
-    srand(time(0));
     Meci meci_1(echipa_1,echipa_2);
     Meci meci_2(echipa_2,echipa_3);
     Meci meci_3(echipa_1,echipa_3);
-    meci_1.joaca();
-    meci_2.joaca();
-    meci_3.joaca();
+    int v,e,i;
+    v = i = e = 0;
+    while(1)
+    {
+        meci_1.joaca(v,e,i);
+        meci_2.joaca(v,e,i);
+        meci_3.joaca(v,e,i);
+        cout<<endl;
+        if(v == e && v == i)
+            break;
+        else
+        {
+            v = e = i= 0;
+        }
+    }
     return 0;
 }
