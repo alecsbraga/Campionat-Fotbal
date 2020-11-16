@@ -209,7 +209,7 @@ int main()
     Patron patron_2("Pablo Cortacero", echipa_2);
     Stadion stadion_1("Ghencea",echipa_1);
     Stadion stadion_2("Stefan Cel Mare",echipa_2);
-    srand(8);
+    srand(time(0));
     Meci meci_1(echipa_1,echipa_2);
     Meci meci_2(echipa_2,echipa_3);
     Meci meci_3(echipa_1,echipa_3);
