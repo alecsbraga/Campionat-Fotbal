@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -25,12 +26,12 @@ public:
         nr_partide_egale++;
     }
 
-    void afisare_date()
+    const void afisare_date()
     {
         cout<<nume_echipa<<" "<<nr_partide_castigate+nr_partide_egale+nr_partide_pierdute<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<nr_partide_castigate*3+nr_partide_egale<<'\n';
     }
 
-    void echipa_nume()
+    const void echipa_nume()
     {
         cout<<nume_echipa;
     }
@@ -159,8 +160,10 @@ public:
 
     void joaca()
     {
-        int castiga= 1 + (rand() % ( 3 - 1 + 1 ) );
+
         bool remiza;
+        int castiga= 1 + (rand() % ( 3 - 1 + 1 ) );
+        cout<<castiga<<endl;
         if(castiga == 1)
         {
             remiza= false;
@@ -206,6 +209,7 @@ int main()
     Patron patron_2("Pablo Cortacero", echipa_2);
     Stadion stadion_1("Ghencea",echipa_1);
     Stadion stadion_2("Stefan Cel Mare",echipa_2);
+    srand(8);
     Meci meci_1(echipa_1,echipa_2);
     Meci meci_2(echipa_2,echipa_3);
     Meci meci_3(echipa_1,echipa_3);
