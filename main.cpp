@@ -67,7 +67,7 @@ Echipa::~Echipa()
 
 ostream& operator<<(ostream& out, Echipa& echipa)
 {
-    out<<cout<<echipa.nume_echipa<<" "<<echipa.nr_partide_castigate+echipa.nr_partide_egale+echipa.nr_partide_pierdute<<" "<<echipa.nr_partide_castigate<<" "<<echipa.nr_partide_egale<<" "<<echipa.nr_partide_pierdute<<" "<<echipa.nr_partide_castigate*3+echipa.nr_partide_egale<<'\n';
+    out<<echipa.nume_echipa<<" "<<echipa.nr_partide_castigate+echipa.nr_partide_egale+echipa.nr_partide_pierdute<<" "<<echipa.nr_partide_castigate<<" "<<echipa.nr_partide_egale<<" "<<echipa.nr_partide_pierdute<<" "<<echipa.nr_partide_castigate*3+echipa.nr_partide_egale<<'\n';
     return out;
 }
 
