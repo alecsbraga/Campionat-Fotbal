@@ -24,12 +24,6 @@ public:
     {
         nr_partide_egale++;
     }
-
-    void afisare_date() const
-    {
-        cout<<nume_echipa<<" "<<nr_partide_castigate+nr_partide_egale+nr_partide_pierdute<<" "<<nr_partide_castigate<<" "<<nr_partide_egale<<" "<<nr_partide_pierdute<<" "<<nr_partide_castigate*3+nr_partide_egale<<'\n';
-    }
-
     void echipa_nume() const
     {
         cout<<nume_echipa;
@@ -62,6 +56,8 @@ public:
         return *this;
     }
 
+    friend ostream& operator<<(ostream&, Echipa& );
+
     ~Echipa();
 };
 Echipa::~Echipa()
@@ -69,15 +65,21 @@ Echipa::~Echipa()
     //  cout<<'\n'<<"Gata cu echipa "<<nume_echipa<<'\n';
 }
 
+ostream& operator<<(ostream& out, Echipa& echipa)
+{
+    out<<cout<<echipa.nume_echipa<<" "<<echipa.nr_partide_castigate+echipa.nr_partide_egale+echipa.nr_partide_pierdute<<" "<<echipa.nr_partide_castigate<<" "<<echipa.nr_partide_egale<<" "<<echipa.nr_partide_pierdute<<" "<<echipa.nr_partide_castigate*3+echipa.nr_partide_egale<<'\n';
+    return out;
+}
+
 class Patron
 {
     const string nume_patron;
     Echipa echipa;
 public:
-    void afisare_date()
+    const void afisare_date()
     {
         cout<<"Patron: "<<nume_patron<<" "<<", club: ";
-        echipa.afisare_date();
+        cout<<echipa;
     }
     Patron(const string &nume_patron, Echipa &echipa)
         :nume_patron{nume_patron},
@@ -103,7 +105,7 @@ public:
     void afisare_date()
     {
         cout<<"Stadion: "<<nume_stadion<<" Gazda: "<<endl;
-        echipa.afisare_date();
+        cout<<echipa;
 
     }
 
@@ -140,8 +142,8 @@ void cine_a_castigat(Echipa &castigatoare, Echipa &pierzatoare, bool remiza)
         cout<<", s-a terminat egal";
     }
     cout<<endl<<"Datele sunt urmatoarele:"<<endl;
-    castigatoare.afisare_date();
-    pierzatoare.afisare_date();
+    cout<<castigatoare;
+    cout<<pierzatoare;
 
 }
 class Meci
@@ -162,7 +164,6 @@ public:
 
         bool remiza;
         int castiga= 1 + (rand() % ( 3 - 1 + 1 ) );
-        cout<<castiga<<endl;
         if(castiga == 1)
         {
             remiza= false;
@@ -204,9 +205,9 @@ int main()
     Echipa echipa_1("FCSB", 4, 1);
     Echipa echipa_2("FC Dinamo Bucuresti",2, 2, 1);
     Echipa echipa_3("CFR Cluj",3,1,1);
-    echipa_1.afisare_date();
-    echipa_2.afisare_date();
-    echipa_3.afisare_date();
+    cout<<echipa_1;
+    cout<<echipa_2;
+    cout<<echipa_3;
     Patron patron_1("Gigi Becali", echipa_1);
     Patron patron_2("Pablo Cortacero", echipa_2);
     Stadion stadion_1("Ghencea",echipa_1);
@@ -222,7 +223,7 @@ int main()
         meci_2.joaca(v,e,i);
         meci_3.joaca(v,e,i);
         cout<<endl;
-        if(v == e && v == i)
+        if(v >=1 && e>=1 && i >=1 )
             break;
         else
         {
