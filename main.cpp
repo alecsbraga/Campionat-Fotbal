@@ -76,7 +76,7 @@ class Patron
     const string nume_patron;
     Echipa echipa;
 public:
-    const void afisare_date()
+    void afisare_date()
     {
         cout<<"Patron: "<<nume_patron<<" "<<", club: ";
         cout<<echipa;
