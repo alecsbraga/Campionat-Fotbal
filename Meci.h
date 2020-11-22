@@ -9,6 +9,7 @@ class Meci
     Echipa echipa_1;
     Echipa echipa_2;
 public:
+
     void joaca(Echipa& echipa_1, Echipa& echipa_2);
 
     ~Meci();

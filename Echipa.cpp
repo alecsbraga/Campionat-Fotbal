@@ -17,7 +17,7 @@ Echipa::~Echipa()
 
 std::ostream& operator<<(std::ostream& out, Echipa& echipa)
 {
-    out<<echipa.nume_echipa<<" "<<echipa.Punctaj()<<" "<<echipa.nr_partide_castigate<<" "<<echipa.nr_partide_egale<<" "<<echipa.nr_partide_pierdute<<" "<<echipa.nr_partide_castigate*3+echipa.nr_partide_egale<<'\n';
+    out<<echipa.nume_echipa<<" "<<echipa.nr_partide_castigate+echipa.nr_partide_egale+echipa.nr_partide_pierdute<<" "<<echipa.nr_partide_castigate<<" "<<echipa.nr_partide_egale<<" "<<echipa.nr_partide_pierdute<<" "<<echipa.nr_partide_castigate*3+echipa.nr_partide_egale<<'\n';
     return out;
 }
 
@@ -25,4 +25,9 @@ std::istream& operator >>(std::istream& in, Echipa& echipa)
 {
     in>>echipa.nume_echipa>>echipa.nr_partide_castigate>>echipa.nr_partide_egale>>echipa.nr_partide_pierdute;
     return in;
+}
+
+bool Echipa::operator<(Echipa& echipa)
+{
+    return this->Punctaj()  > echipa.Punctaj();
 }
