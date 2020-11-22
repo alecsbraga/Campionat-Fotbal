@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1606063089 source:c:\users\shift\documents\anu2 sem 1\poo\laborator\tema poo\main.cpp
+	<iostream>
+	"Echipa.h"
+	"Patron.h"
+	"Stadion.h"
+	"Meci.h"
+	<vector>
+	<fstream>
+
+1606062254 c:\users\shift\documents\anu2 sem 1\poo\laborator\tema poo\echipa.h
+	<iostream>
+
+1606058434 source:c:\users\shift\documents\anu2 sem 1\poo\laborator\tema poo\echipa.cpp
+	<iostream>
+	"Echipa.h"
+
+1606047730 c:\users\shift\documents\anu2 sem 1\poo\laborator\tema poo\patron.h
+	"Echipa.h"
+	<iostream>
+
+1606047383 source:c:\users\shift\documents\anu2 sem 1\poo\laborator\tema poo\patron.cpp
+	<iostream>
+	"Patron.h"
+
+1606047730 c:\users\shift\documents\anu2 sem 1\poo\laborator\tema poo\stadion.h
+	"Echipa.h"
+	<iostream>
+
+1606047383 source:c:\users\shift\documents\anu2 sem 1\poo\laborator\tema poo\stadion.cpp
+	<iostream>
+	"Stadion.h"
+
+1606057333 source:c:\users\shift\documents\anu2 sem 1\poo\laborator\tema poo\meci.cpp
+	<iostream>
+	"Meci.h"
+
+1606057324 c:\users\shift\documents\anu2 sem 1\poo\laborator\tema poo\meci.h
+	<iostream>
+	"Echipa.h"
+	<cstdlib>
+

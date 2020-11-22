@@ -1,208 +1,73 @@
 #include <iostream>
-#include <cstdlib>
+#include "Echipa.h"
+#include "Patron.h"
+#include "Stadion.h"
+#include "Meci.h"
+#include <vector>
+#include <fstream>
 
 using namespace std;
 
-class Echipa
+class Campionat:public Meci
 {
-    string nume_echipa;
-    int nr_partide_castigate, nr_partide_egale, nr_partide_pierdute;
+    string nume_campionat;
+    vector <Echipa> campionat_list;
 
 public:
-
-    void a_castigat_un_meci()
+    void meciuri()
     {
-        nr_partide_castigate++;
+        int i,j;
+        for(i=0; i<4; ++i)
+            for(j=0; j<4; ++j)
+                if(i!=j)
+                    joaca(campionat_list[i],campionat_list[j]);
     }
 
-    void a_pierdut_un_meci()
+    void sortare()
     {
-        nr_partide_pierdute++;
-    }
-
-    void a_facut_egal()
-    {
-        nr_partide_egale++;
-    }
-    void echipa_nume() const
-    {
-        cout<<nume_echipa;
-    }
-
-    Echipa(const string &nume_echipa = "noname", int nr_partide_castigate = 0, int nr_partide_egale = 0, int nr_partide_pierdute = 0)
-        :nume_echipa{nume_echipa},
-         nr_partide_castigate{nr_partide_castigate},
-         nr_partide_egale{nr_partide_egale},
-         nr_partide_pierdute{nr_partide_pierdute}
-    {
+        cout<<campionat_list[1].Punctaj()<<" ";
+        int i,j;
+        for(i=0; i<4; ++i)
+            for(j=0; j<4; ++j)
+                if(campionat_list[i].Punctaj()>campionat_list[j].Punctaj())
+                    swap(campionat_list[i],campionat_list[j]);
 
     }
 
-    Echipa(Echipa &echipa)
-        :nume_echipa{echipa.nume_echipa},
-         nr_partide_castigate{echipa.nr_partide_castigate},
-         nr_partide_egale{echipa.nr_partide_egale},
-         nr_partide_pierdute{echipa.nr_partide_pierdute}
+    friend istream& operator>>(istream&, Campionat&);
+
+    friend ostream& operator<<(ostream&, Campionat&);
+
+    ~Campionat()
     {
 
     }
 
-    Echipa& operator=(const Echipa &echipa)
-    {
-        nume_echipa=echipa.nume_echipa;
-        nr_partide_castigate=echipa.nr_partide_castigate;
-        nr_partide_egale=echipa.nr_partide_egale;
-        nr_partide_pierdute=echipa.nr_partide_pierdute;
-        return *this;
-    }
-
-    friend ostream& operator<<(ostream&, Echipa& );
-
-    ~Echipa();
 };
-Echipa::~Echipa()
+
+istream& operator >> (istream& in, Campionat& campionat)
 {
-    //  cout<<'\n'<<"Gata cu echipa "<<nume_echipa<<'\n';
+    in>>campionat.nume_campionat;
+    Echipa echipa;
+    for(int i=0; i<4; ++i)
+    {
+        in>>echipa;
+        campionat.campionat_list.push_back(echipa);
+    }
+    return in;
 }
 
-ostream& operator<<(ostream& out, Echipa& echipa)
+ostream& operator <<(ostream& out, Campionat& campionat)
 {
-    out<<echipa.nume_echipa<<" "<<echipa.nr_partide_castigate+echipa.nr_partide_egale+echipa.nr_partide_pierdute<<" "<<echipa.nr_partide_castigate<<" "<<echipa.nr_partide_egale<<" "<<echipa.nr_partide_pierdute<<" "<<echipa.nr_partide_castigate*3+echipa.nr_partide_egale<<'\n';
+    out<<campionat.nume_campionat<<endl;
+    for(int i=0; i<campionat.campionat_list.size(); ++i)
+        out<<i+1<<". "<<campionat.campionat_list[i];
     return out;
-}
-
-class Patron
-{
-    const string nume_patron;
-    Echipa echipa;
-public:
-    void afisare_date()
-    {
-        cout<<"Patron: "<<nume_patron<<" "<<", club: ";
-        cout<<echipa;
-    }
-    Patron(const string &nume_patron, Echipa &echipa)
-        :nume_patron{nume_patron},
-         echipa{echipa}
-    {
-        afisare_date();
-    }
-    ~Patron();
-
-};
-
-Patron::~Patron()
-{
-    // cout<<"Gata cu patronul "<<nume_patron<<endl;
-}
-
-class Stadion
-{
-    const string nume_stadion;
-    Echipa echipa;
-
-public:
-    void afisare_date()
-    {
-        cout<<"Stadion: "<<nume_stadion<<" Gazda: "<<endl;
-        cout<<echipa;
-
-    }
-
-    Stadion(const string &nume_stadion, Echipa &echipa)
-        :nume_stadion{nume_stadion},
-         echipa{echipa}
-    {
-        afisare_date();
-    }
-
-    ~Stadion();
-
-};
-
-Stadion::~Stadion()
-{
-    // cout<<"Gata cu stadionul " << nume_stadion;
-}
-
-void cine_a_castigat(Echipa &castigatoare, Echipa &pierzatoare, bool remiza)
-{
-    cout<<"In urma meciului dintre " ;
-    castigatoare.echipa_nume();
-    cout<<" si ";
-    pierzatoare.echipa_nume();
-    if(remiza == false)
-    {
-        cout<<", a castigat ";
-        castigatoare.echipa_nume();
-    }
-    else
-    {
-
-        cout<<", s-a terminat egal";
-    }
-    cout<<endl<<"Datele sunt urmatoarele:"<<endl;
-    cout<<castigatoare;
-    cout<<pierzatoare;
-
-}
-class Meci
-{
-    Echipa echipa_1;
-    Echipa echipa_2;
-public:
-
-    Meci(Echipa &echipa_1, Echipa &echipa_2)
-        :echipa_1{echipa_1},
-         echipa_2{echipa_2}
-    {
-
-    }
-
-    void joaca(int &v, int &e, int&i)
-    {
-
-        bool remiza;
-        int castiga= 1 + (rand() % ( 3 - 1 + 1 ) );
-        if(castiga == 1)
-        {
-            remiza= false;
-            echipa_1.a_castigat_un_meci();
-            echipa_2.a_pierdut_un_meci();
-            cine_a_castigat(echipa_1, echipa_2, remiza);
-            ++v;
-
-        }
-        else if(castiga == 2)
-        {
-            remiza= true;
-            echipa_1.a_facut_egal();
-            echipa_2.a_facut_egal();
-            cine_a_castigat(echipa_1, echipa_2, remiza);
-            ++e;
-
-        }
-        else
-        {
-            remiza= false;
-            echipa_2.a_castigat_un_meci();
-            echipa_1.a_pierdut_un_meci();
-            cine_a_castigat(echipa_2, echipa_1, remiza);
-            ++i;
-        }
-
-    }
-    ~Meci();
-};
-
-Meci::~Meci()
-{
-
 }
 
 int main()
 {
-    Echipa echipa_1("FCSB", 4, 1);
+    /*Echipa echipa_1("FCSB", 4, 1);
     Echipa echipa_2("FC Dinamo Bucuresti",2, 2, 1);
     Echipa echipa_3("CFR Cluj",3,1,1);
     cout<<echipa_1;
@@ -215,20 +80,13 @@ int main()
     Meci meci_1(echipa_1,echipa_2);
     Meci meci_2(echipa_2,echipa_3);
     Meci meci_3(echipa_1,echipa_3);
-    int v,e,i;
-    v = i = e = 0;
-    while(1)
-    {
-        meci_1.joaca(v,e,i);
-        meci_2.joaca(v,e,i);
-        meci_3.joaca(v,e,i);
-        cout<<endl;
-        if(v >=1 && e>=1 && i >=1 )
-            break;
-        else
-        {
-            v = e = i= 0;
-        }
-    }
+
+    */
+    Campionat campionat;
+    ifstream f("Echipe.in");
+    f>>campionat;
+    campionat.meciuri();
+    campionat.sortare();
+    cout<<campionat;
     return 0;
 }
