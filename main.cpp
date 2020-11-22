@@ -5,8 +5,16 @@
 #include "Meci.h"
 #include <vector>
 #include <fstream>
+#include <cstdlib>
 
 using namespace std;
+
+int compare(const void *a, const void *b)
+{
+    Echipa *A=(Echipa *) a;
+    Echipa *B=(Echipa *) b;
+    return B->Punctaj() - A->Punctaj();
+}
 
 class Campionat:public Meci
 {
@@ -17,31 +25,16 @@ public:
     void meciuri()
     {
         int i,j;
-        for(i=0; i<4; ++i)
-            for(j=0; j<4; ++j)
+        for(i=0;i<4;++i)
+            for(j=0;j<4;++j)
                 if(i!=j)
-                    joaca(campionat_list[i],campionat_list[j]);
-    }
-
-    void sortare()
-    {
-        cout<<campionat_list[1].Punctaj()<<" ";
-        int i,j;
-        for(i=0; i<4; ++i)
-            for(j=0; j<4; ++j)
-                if(campionat_list[i].Punctaj()>campionat_list[j].Punctaj())
-                    swap(campionat_list[i],campionat_list[j]);
-
+                joaca(campionat_list[i],campionat_list[j]);
+       qsort(&campionat_list[0], campionat_list.size(), sizeof(Echipa), compare);
     }
 
     friend istream& operator>>(istream&, Campionat&);
 
     friend ostream& operator<<(ostream&, Campionat&);
-
-    ~Campionat()
-    {
-
-    }
 
 };
 
@@ -81,12 +74,11 @@ int main()
     Meci meci_2(echipa_2,echipa_3);
     Meci meci_3(echipa_1,echipa_3);
 
-    */
+*/
     Campionat campionat;
     ifstream f("Echipe.in");
     f>>campionat;
     campionat.meciuri();
-    campionat.sortare();
     cout<<campionat;
     return 0;
 }

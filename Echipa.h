@@ -26,7 +26,7 @@ public:
 
     int Punctaj()
     {
-       return (nr_partide_castigate+nr_partide_egale+nr_partide_pierdute);
+       return (3*nr_partide_castigate+nr_partide_egale);
     }
 
     void echipa_nume() const
