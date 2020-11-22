@@ -22,12 +22,12 @@ int main()
     Patron patron_2("Pablo Cortacero", echipa_2);
     Stadion stadion_1("Ghencea",echipa_1);
     Stadion stadion_2("Stefan Cel Mare",echipa_2);
-
     Campionat campionat;
     ifstream f("Echipe.in");
     f>>campionat;
     campionat.meciuri();
     campionat.ordoneaza();
     cout<<campionat;
+    campionat.cine_a_castigat();
     return 0;
 }

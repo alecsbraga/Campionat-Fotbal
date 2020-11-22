@@ -11,6 +11,12 @@ void Campionat::meciuri()
 
 }
 
+void Campionat::cine_a_castigat()
+{
+    std::cout<<"Echipa castigatoare este ";
+    campionat_list[0].echipa_nume();
+}
+
 std::istream& operator >> (std::istream& in, Campionat& campionat)
 {
     in>>campionat.nume_campionat;

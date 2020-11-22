@@ -15,6 +15,8 @@ public:
 
     void meciuri();
 
+    void cine_a_castigat();
+
     void ordoneaza()
     {
         std::sort(campionat_list.begin(), campionat_list.end());

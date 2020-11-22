@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Meci.h"
 
-void cine_a_castigat(Echipa &castigatoare, Echipa &pierzatoare, bool remiza)
+void Meci::cine_a_castigat(Echipa &castigatoare, Echipa &pierzatoare, bool remiza)
 {
     std::cout<<"In urma meciului dintre " ;
     castigatoare.echipa_nume();
