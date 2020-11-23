@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include "Campionat.h"
+#include <typeinfo>
 
 using namespace std;
 
@@ -22,13 +23,19 @@ int main()
     Stadion stadion_1("Ghencea",echipa_1);
     Stadion stadion_2("Stefan Cel Mare",echipa_2);
     Campionat campionat;
-
     ifstream f;
     try
     {
         f.open("Echipe.in");
         f>>campionat;
-        campionat.joaca();
+        try
+        {
+            campionat.joaca();
+        }
+        catch(const runtime_error& e)
+        {
+            cout<<e.what()<<endl;
+        }
         campionat.ordoneaza();
         cout<<campionat;
         campionat.cine_a_castigat();
