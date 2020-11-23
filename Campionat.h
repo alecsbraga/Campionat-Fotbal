@@ -25,6 +25,8 @@ public:
 
     friend std::ostream& operator<<(std::ostream&, Campionat&);
 
+    virtual ~Campionat();
+
 };
 
 #endif // CAMPIONAT_H_INCLUDED

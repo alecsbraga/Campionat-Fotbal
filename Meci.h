@@ -13,7 +13,7 @@ public:
     virtual void cine_a_castigat(Echipa &, Echipa &, bool );
 
     void joaca(Echipa& echipa_1, Echipa& echipa_2);
-    ~Meci();
+    virtual ~Meci();
 };
 
 #endif // MECI_H_INCLUDED

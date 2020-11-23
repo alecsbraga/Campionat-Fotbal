@@ -36,3 +36,8 @@ std::ostream& operator <<(std::ostream& out, Campionat& campionat)
         out<<i+1<<". "<<campionat.campionat_list[i];
     return out;
 }
+
+Campionat::~Campionat()
+{
+
+}
