@@ -1,3 +1,4 @@
+#include <variant>
 #include <iostream>
 #include "Echipa.h"
 #include "Patron.h"
@@ -9,7 +10,6 @@
 
 using namespace std;
 
-
 int main()
 {
     Echipa echipa_1("FCSB", 4, 1);
@@ -19,16 +19,27 @@ int main()
     cout<<echipa_2;
     cout<<echipa_3;
     Patron patron_1("Gigi Becali", echipa_1);
+
+    try
+    {
+        get<Echipa>(echipa_1);
+    }
+    catch(const bad_variant_access& e)
+    {
+        cout<<e.what()<<endl;
+    }
+
     Patron patron_2("Pablo Cortacero", echipa_2);
     Stadion stadion_1("Ghencea",echipa_1);
     Stadion stadion_2("Stefan Cel Mare",echipa_2);
     Campionat campionat;
+
     ifstream f;
     try
     {
         f.open("Echipe.in");
         f>>campionat;
-        campionat.meciuri();
+        campionat.joaca();
         campionat.ordoneaza();
         cout<<campionat;
         campionat.cine_a_castigat();
@@ -39,5 +50,6 @@ int main()
         cout<<"Execeptie deschidere/citire fisier";
     }
     f.close();
+
     return 0;
 }

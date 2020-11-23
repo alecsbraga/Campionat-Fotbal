@@ -13,7 +13,7 @@ class Campionat:public Meci
 
 public:
 
-    void meciuri();
+    void joaca();
 
     void cine_a_castigat();
 

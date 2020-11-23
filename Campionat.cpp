@@ -1,13 +1,13 @@
 #include <iostream>
 #include "Campionat.h"
 
-void Campionat::meciuri()
+void Campionat::joaca()
 {
     int i,j;
     for(i=0; i<8; ++i)
         for(j=0; j<8; ++j)
             if(i!=j)
-                joaca(campionat_list[i],campionat_list[j]);
+                Meci::joaca(campionat_list[i],campionat_list[j]);
 
 }
 
