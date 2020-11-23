@@ -23,11 +23,21 @@ int main()
     Stadion stadion_1("Ghencea",echipa_1);
     Stadion stadion_2("Stefan Cel Mare",echipa_2);
     Campionat campionat;
-    ifstream f("Echipe.in");
-    f>>campionat;
-    campionat.meciuri();
-    campionat.ordoneaza();
-    cout<<campionat;
-    campionat.cine_a_castigat();
+    ifstream f;
+    try
+    {
+        f.open("Echipe.in");
+        f>>campionat;
+        campionat.meciuri();
+        campionat.ordoneaza();
+        cout<<campionat;
+        campionat.cine_a_castigat();
+
+    }
+    catch (const ifstream::failure& e)
+    {
+        cout<<"Execeptie deschidere/citire fisier";
+    }
+    f.close();
     return 0;
 }
