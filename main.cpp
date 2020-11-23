@@ -1,4 +1,3 @@
-#include <variant>
 #include <iostream>
 #include "Echipa.h"
 #include "Patron.h"
@@ -19,16 +18,6 @@ int main()
     cout<<echipa_2;
     cout<<echipa_3;
     Patron patron_1("Gigi Becali", echipa_1);
-
-    try
-    {
-        get<Echipa>(echipa_1);
-    }
-    catch(const bad_variant_access& e)
-    {
-        cout<<e.what()<<endl;
-    }
-
     Patron patron_2("Pablo Cortacero", echipa_2);
     Stadion stadion_1("Ghencea",echipa_1);
     Stadion stadion_2("Stefan Cel Mare",echipa_2);
