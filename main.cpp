@@ -13,7 +13,7 @@ using namespace std;
 
 int main()
 {
-    auto_ptr<Echipa>echipa_1(new Echipa("FCSB", 4, 1));
+    shared_ptr<Echipa>echipa_1(new Echipa("FCSB", 4, 1));
     Echipa echipa_2("FC Dinamo Bucuresti",2, 2, 1);
     Echipa echipa_3("CFR Cluj",3,1,1);
     cout<<*echipa_1;
@@ -23,7 +23,7 @@ int main()
     Patron patron_2("Pablo Cortacero", echipa_2);
     Stadion stadion_1("Ghencea", *echipa_1);
     Stadion stadion_2("Stefan Cel Mare",echipa_2);
-    auto_ptr<Campionat> campionat (new Campionat());
+    shared_ptr<Campionat> campionat (new Campionat());
     ifstream f;
     try
     {
