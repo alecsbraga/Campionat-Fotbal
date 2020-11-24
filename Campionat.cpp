@@ -7,7 +7,10 @@ void Campionat::joaca()
     for(i=0; i<8; ++i)
         for(j=0; j<8; ++j)
             if(i!=j)
+            {
                 Meci::joaca(campionat_list[i],campionat_list[j]);
+                std::cout<<std::endl;
+            }
 
 }
 
@@ -32,7 +35,7 @@ std::istream& operator >> (std::istream& in, Campionat& campionat)
 std::ostream& operator <<(std::ostream& out, Campionat& campionat)
 {
     out<<campionat.nume_campionat<<std::endl;
-    for(int i=0; i<campionat.campionat_list.size(); ++i)
+    for(unsigned int i=0; i<campionat.campionat_list.size(); ++i)
         out<<i+1<<". "<<campionat.campionat_list[i];
     return out;
 }
