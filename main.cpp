@@ -36,7 +36,7 @@ int main()
         f.open("Echipe.in");
         f>>*campionat_liga_1;
         f>>*campionat_liga_2;
-        ///---------------------------------------------------------------------------------------------
+
         try
         {
             campionat_liga_2->joaca();
@@ -49,7 +49,7 @@ int main()
         campionat_liga_1->ordoneaza();
         campionat_liga_2->ordoneaza();
 
-        ///-------------------------------------------------------------------------------------------------
+
 
         cout<<*campionat_liga_1;
         campionat_liga_1->cine_a_castigat();
