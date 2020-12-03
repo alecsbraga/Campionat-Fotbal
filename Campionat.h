@@ -6,7 +6,6 @@
 #include "Echipa.h"
 #include "Meci.h"
 
-
 class Campionat:public Meci
 {
 protected:

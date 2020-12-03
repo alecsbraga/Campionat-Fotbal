@@ -61,7 +61,6 @@ int main()
         delete campionat_liga_1;
         delete campionat_liga_2;
 
-
     }
     catch (const ifstream::failure& e)
     {

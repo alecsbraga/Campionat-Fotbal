@@ -19,6 +19,7 @@ void Campionat::cine_a_castigat()
     std::cout<<"Echipa castigatoare este ";
     campionat_list[0].echipa_nume();
     std::cout<<std::endl;
+
 }
 
 std::istream& operator >> (std::istream& in, Campionat& campionat)
