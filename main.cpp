@@ -10,29 +10,24 @@
 #include "Liga2.h"
 #include <typeinfo>
 #include <memory>
-#include <optional>
 
 using namespace std;
 
 int main()
 {
     shared_ptr<Echipa>echipa_1(new Echipa("FCSB", 4, 1));
-    ///Echipa echipa_2("FC Dinamo Bucuresti",2, 2, 1);
-    optional<Echipa> echipa_2;
     try
     {
-        echipe_2=*echipa_1;
+        Echipa echipa_2("FC Dinamo Bucuresti",2, 2, 1);
+        cout<<echipa_2;
     }
-    catch(const bad_optional_access& e)
+    catch(const bad_typeid& e)
     {
-        scout << e.what() << '\n';
+        cout << e.what() << '\n';
     }
     cout<<*echipa_1;
-    cout<<*echipa_2;
     Patron patron_1("Gigi Becali", *echipa_1);
-    Patron patron_2("Pablo Cortacero", echipa_2);
     Stadion stadion_1("Ghencea", *echipa_1);
-    Stadion stadion_2("Stefan Cel Mare",echipa_2);
     Campionat *campionat_liga_1 = new Liga1;
     Campionat *campionat_liga_2 = new Liga2;
     ifstream f;
