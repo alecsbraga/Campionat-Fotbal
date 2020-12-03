@@ -8,7 +8,7 @@ void Campionat::joaca()
         for(j=0; j<echipe; ++j)
             if(i!=j)
             {
-                Meci::joaca(campionat_list[i],campionat_list[j]);
+                m.joaca(campionat_list[i],campionat_list[j]);
                 std::cout<<std::endl;
             }
 

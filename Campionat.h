@@ -6,12 +6,13 @@
 #include "Echipa.h"
 #include "Meci.h"
 
-class Campionat:public Meci
+class Campionat
 {
 protected:
     std::string nume_campionat;
     std::vector <Echipa> campionat_list;
     int echipe;
+    Meci m;
 
 public:
 
