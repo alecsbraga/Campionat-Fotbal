@@ -71,6 +71,8 @@ int main()
         cout<<"------------------------------------------------"<<endl;
         cout<<*campionat_liga_2;
         campionat_liga_2->cine_a_castigat();
+        delete campionat_liga_1;
+        delete campionat_liga_2;
 
 
     }
