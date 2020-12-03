@@ -10,15 +10,25 @@
 #include "Liga2.h"
 #include <typeinfo>
 #include <memory>
+#include <optional>
 
 using namespace std;
 
 int main()
 {
     shared_ptr<Echipa>echipa_1(new Echipa("FCSB", 4, 1));
-    Echipa echipa_2("FC Dinamo Bucuresti",2, 2, 1);
+    ///Echipa echipa_2("FC Dinamo Bucuresti",2, 2, 1);
+    optional<Echipa> echipa_2;
+    try
+    {
+        echipe_2=*echipa_1;
+    }
+    catch(const bad_optional_access& e)
+    {
+        scout << e.what() << '\n';
+    }
     cout<<*echipa_1;
-    cout<<echipa_2;
+    cout<<*echipa_2;
     Patron patron_1("Gigi Becali", *echipa_1);
     Patron patron_2("Pablo Cortacero", echipa_2);
     Stadion stadion_1("Ghencea", *echipa_1);
@@ -32,7 +42,7 @@ int main()
 
         f>>*campionat_liga_1;
         f>>*campionat_liga_2;
-
+        ///---------------------------------------------------------------------------------------------
         try
         {
             campionat_liga_1->joaca();
@@ -49,6 +59,7 @@ int main()
         {
             cout<<e.what()<<endl;
         }
+        ///-----------------------------------------------------------------------------------------------
         try
         {
             campionat_liga_2->joaca();
@@ -65,7 +76,7 @@ int main()
         {
             cout<<e.what()<<endl;
         }
-
+        ///-------------------------------------------------------------------------------------------------
         cout<<*campionat_liga_1;
         campionat_liga_1->cine_a_castigat();
         cout<<"------------------------------------------------"<<endl;
