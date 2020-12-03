@@ -15,7 +15,7 @@ using namespace std;
 
 int main()
 {
-    shared_ptr<Echipa>echipa_1(new Echipa("FCSB", 4, 1));
+    shared_ptr<Echipa>echipa_1(make_shared<Echipa>("FCSB", 4, 1));
     try
     {
         Echipa echipa_2("FC Dinamo Bucuresti",2, 2, 1);
@@ -34,47 +34,28 @@ int main()
     try
     {
         f.open("Echipe.in");
-
         f>>*campionat_liga_1;
         f>>*campionat_liga_2;
         ///---------------------------------------------------------------------------------------------
         try
         {
+            campionat_liga_2->joaca();
             campionat_liga_1->joaca();
         }
         catch(const runtime_error& e)
         {
             cout<<e.what()<<endl;
         }
-        try
-        {
-            campionat_liga_1->ordoneaza();
-        }
-        catch(const runtime_error& e)
-        {
-            cout<<e.what()<<endl;
-        }
-        ///-----------------------------------------------------------------------------------------------
-        try
-        {
-            campionat_liga_2->joaca();
-        }
-        catch(const runtime_error& e)
-        {
-            cout<<e.what()<<endl;
-        }
-        try
-        {
-            campionat_liga_2->ordoneaza();
-        }
-        catch(const runtime_error& e)
-        {
-            cout<<e.what()<<endl;
-        }
+        campionat_liga_1->ordoneaza();
+        campionat_liga_2->ordoneaza();
+
         ///-------------------------------------------------------------------------------------------------
+
         cout<<*campionat_liga_1;
         campionat_liga_1->cine_a_castigat();
+
         cout<<"------------------------------------------------"<<endl;
+
         cout<<*campionat_liga_2;
         campionat_liga_2->cine_a_castigat();
         delete campionat_liga_1;

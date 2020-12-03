@@ -4,8 +4,8 @@
 void Campionat::joaca()
 {
     int i,j;
-    for(i=0; i<9; ++i)
-        for(j=0; j<9; ++j)
+    for(i=0; i<echipe; ++i)
+        for(j=0; j<echipe; ++j)
             if(i!=j)
             {
                 Meci::joaca(campionat_list[i],campionat_list[j]);
@@ -23,9 +23,10 @@ void Campionat::cine_a_castigat()
 
 std::istream& operator >> (std::istream& in, Campionat& campionat)
 {
+    in>>campionat.echipe;
     in>>campionat.nume_campionat;
     Echipa echipa;
-    for(int i=0; i<9; ++i)
+    for(int i=0; i<campionat.echipe; ++i)
     {
         in>>echipa;
         campionat.campionat_list.push_back(echipa);
