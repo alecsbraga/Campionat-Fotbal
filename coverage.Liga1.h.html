@@ -269,18 +269,18 @@
             <td class="headerValue">Liga1.h</td>
             <td></td>
             <td class="headerName">Lines:</td>
-            <td class="headerTableEntry">1</td>
-            <td class="headerTableEntry">1</td>
-            <td class="headerTableEntry" style="background-color:LightGreen">100.0 %</td>
+            <td class="headerTableEntry">5</td>
+            <td class="headerTableEntry">6</td>
+            <td class="headerTableEntry" style="background-color:#FFFF55">83.3 %</td>
           </tr>
           <tr>
             <td class="headerName">Date:</td>
-            <td class="headerValue">2020-12-03 20:42:13</td>
+            <td class="headerValue">2020-12-23 19:31:26</td>
             <td></td>
             <td class="headerName">Branches:</td>
-            <td class="headerTableEntry">0</td>
-            <td class="headerTableEntry">0</td>
-            <td class="headerTableEntry" style="background-color:LightGray">- %</td>
+            <td class="headerTableEntry">2</td>
+            <td class="headerTableEntry">4</td>
+            <td class="headerTableEntry" style="background-color:LightPink">50.0 %</td>
           </tr>
         </table>
       </td>
@@ -330,8 +330,8 @@
     <tr>
     <td align="right" class="lineno"><pre>5</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount coveredLine"><pre>3</pre></td>
-    <td align="left" class="src coveredLine"><pre>class Liga1:public Campionat</pre></td>
+    <td align="right" class="linecount uncoveredLine"><pre></pre></td>
+    <td align="left" class="src uncoveredLine"><pre>class Liga1:public Campionat</pre></td>
     </tr>
 
     <tr>
@@ -345,25 +345,123 @@
     <td align="right" class="lineno"><pre>7</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount "><pre></pre></td>
-    <td align="left" class="src "><pre></pre></td>
+    <td align="left" class="src "><pre>private:</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>8</pre></td>
     <td align="right" class="linebranch"></td>
-    <td align="right" class="linecount "><pre></pre></td>
-    <td align="left" class="src "><pre>};</pre></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    Liga1()= default;</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>9</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount "><pre></pre></td>
-    <td align="left" class="src "><pre></pre></td>
+    <td align="left" class="src "><pre>    static Liga1* liga1;</pre></td>
     </tr>
 
     <tr>
     <td align="right" class="lineno"><pre>10</pre></td>
+    <td align="right" class="linebranch"></td>
+    <td align="right" class="linecount "><pre></pre></td>
+    <td align="left" class="src "><pre>public:</pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>11</pre></td>
+    <td align="right" class="linebranch"></td>
+    <td align="right" class="linecount "><pre></pre></td>
+    <td align="left" class="src "><pre>    Liga1(const Liga1&amp;)= delete;</pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>12</pre></td>
+    <td align="right" class="linebranch"></td>
+    <td align="right" class="linecount "><pre></pre></td>
+    <td align="left" class="src "><pre>    Liga1&amp; operator =(const Liga1&amp;) =delete;</pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>13</pre></td>
+    <td align="right" class="linebranch"></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>    static Liga1* get_liga1()</pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>14</pre></td>
+    <td align="right" class="linebranch"></td>
+    <td align="right" class="linecount "><pre></pre></td>
+    <td align="left" class="src "><pre>    {</pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>15</pre></td>
+    <td align="right" class="linebranch"><span class="takenBranch" title="Branch 0 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 1 not taken">&cross;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>        if(liga1 == nullptr)</pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>16</pre></td>
+    <td align="right" class="linebranch"><span class="takenBranch" title="Branch 2 taken 1 times">&check;</span><span class="notTakenBranch" title="Branch 3 not taken">&cross;</span></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>            { liga1 = new Liga1; }</pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>17</pre></td>
+    <td align="right" class="linebranch"></td>
+    <td align="right" class="linecount coveredLine"><pre>1</pre></td>
+    <td align="left" class="src coveredLine"><pre>            return liga1;</pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>18</pre></td>
+    <td align="right" class="linebranch"></td>
+    <td align="right" class="linecount "><pre></pre></td>
+    <td align="left" class="src "><pre>    }</pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>19</pre></td>
+    <td align="right" class="linebranch"></td>
+    <td align="right" class="linecount "><pre></pre></td>
+    <td align="left" class="src "><pre>};</pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>20</pre></td>
+    <td align="right" class="linebranch"></td>
+    <td align="right" class="linecount "><pre></pre></td>
+    <td align="left" class="src "><pre></pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>21</pre></td>
+    <td align="right" class="linebranch"></td>
+    <td align="right" class="linecount "><pre></pre></td>
+    <td align="left" class="src "><pre>Liga1* Liga1::liga1 = nullptr;</pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>22</pre></td>
+    <td align="right" class="linebranch"></td>
+    <td align="right" class="linecount "><pre></pre></td>
+    <td align="left" class="src "><pre></pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>23</pre></td>
+    <td align="right" class="linebranch"></td>
+    <td align="right" class="linecount "><pre></pre></td>
+    <td align="left" class="src "><pre></pre></td>
+    </tr>
+
+    <tr>
+    <td align="right" class="lineno"><pre>24</pre></td>
     <td align="right" class="linebranch"></td>
     <td align="right" class="linecount "><pre></pre></td>
     <td align="left" class="src "><pre>#endif // LIGA1_H_INCLUDED</pre></td>
