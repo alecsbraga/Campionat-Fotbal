@@ -10,6 +10,8 @@
 #include "Liga2.h"
 #include <typeinfo>
 #include <memory>
+#include "Cupa.h"
+#include "CupaRomaniei.h"
 
 using namespace std;
 
@@ -28,19 +30,24 @@ int main()
     cout<<*echipa_1;
     Patron patron_1("Gigi Becali", *echipa_1);
     Stadion stadion_1("Ghencea", *echipa_1);
-    Campionat *campionat_liga_1 = new Liga1;
-    Campionat *campionat_liga_2 = new Liga2;
+    //Campionat *campionat_liga_1 = new Liga1;
+    auto campionat_liga_1=Liga1::get_liga1();
+    //Campionat *campionat_liga_2 = new Liga2;
+    auto campionat_liga_2=Liga2::get_liga2();
+    Cupa <CupaRomaniei> cupa;
     ifstream f;
     try
     {
         f.open("Echipe.in");
         f>>*campionat_liga_1;
         f>>*campionat_liga_2;
-
+        f>>cupa;
         try
         {
             campionat_liga_2->joaca();
             campionat_liga_1->joaca();
+            cupa.joaca();
+
         }
         catch(const runtime_error& e)
         {
@@ -60,6 +67,10 @@ int main()
         campionat_liga_2->cine_a_castigat();
         delete campionat_liga_1;
         delete campionat_liga_2;
+
+        cout<<"------------------------------------------------"<<endl;
+
+        cout<<cupa;
 
     }
     catch (const ifstream::failure& e)
