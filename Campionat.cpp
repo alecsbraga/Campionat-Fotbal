@@ -3,6 +3,7 @@
 
 void Campionat::joaca()
 {
+    Meci m;
     int i,j;
     for(i=0; i<echipe; ++i)
         for(j=0; j<echipe; ++j)

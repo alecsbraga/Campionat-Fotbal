@@ -10,9 +10,9 @@ class Meci
     Echipa echipa_2;
 public:
 
-    virtual void cine_a_castigat(Echipa &, Echipa &, bool );
+    void cine_a_castigat(Echipa &, Echipa &, bool );
 
-    virtual void joaca(Echipa& echipa_1, Echipa& echipa_2);
+    void joaca(Echipa& echipa_1, Echipa& echipa_2);
 
     virtual ~Meci();
 };

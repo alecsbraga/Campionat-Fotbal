@@ -44,8 +44,8 @@ int main()
         f>>cupa;
         try
         {
-            campionat_liga_2->joaca();
             campionat_liga_1->joaca();
+            campionat_liga_2->joaca();
             cupa.joaca();
 
         }
@@ -69,6 +69,8 @@ int main()
         cout<<"------------------------------------------------"<<endl;
 
         cout<<cupa;
+
+        cout<<"------------------------------------------------"<<endl;
 
     }
     catch (const ifstream::failure& e)

@@ -9,7 +9,7 @@ private:
     static Liga2* liga2;
 public:
     Liga2(const Liga2&)= delete;
-    Liga2& operator =(const Liga2&) =delete;
+    Liga2& operator =(const Liga2&) = delete;
     static Liga2* get_liga2()
     {
         if(liga2 == nullptr)

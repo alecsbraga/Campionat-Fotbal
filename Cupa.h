@@ -8,8 +8,6 @@
 template <class T>class Cupa
 {
 
-
-
 public:
     std::vector <Echipa> cupa_lista;
     int nr_echipe ;
@@ -52,6 +50,7 @@ void Cupa<T>::joaca()
 
 
             }
+            std::cout<<std::endl;
             --numar_echipe;
 
         }

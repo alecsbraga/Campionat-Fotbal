@@ -12,13 +12,13 @@ protected:
     std::string nume_campionat;
     std::vector <Echipa> campionat_list;
     int echipe;
-    Meci m;
+
 
 public:
 
-    void joaca();
+    virtual void joaca();
 
-    void cine_a_castigat();
+    virtual void cine_a_castigat();
 
     void ordoneaza()
     {
