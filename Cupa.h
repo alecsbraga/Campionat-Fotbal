@@ -4,14 +4,17 @@
 #include "Campionat.h"
 #include <iostream>
 #include <vector>
+#include "CupaRomaniei.h"
 
-template <class T>class Cupa
+template <class T>
+class Cupa
 {
 
 public:
     std::vector <Echipa> cupa_lista;
     int nr_echipe ;
     std::string nume_campionat;
+
     void joaca();
 
     template<class U> friend std::istream& operator>>(std::istream& in, Cupa<U>& c);
@@ -20,6 +23,12 @@ public:
 
 
 };
+
+template <class T>void afisare(T cupa)
+{
+    std::cout<<std::endl<<"Numarul total de echipe care au participat la "<<cupa.nume_campionat<<" a fost: ";
+    std::cout<<cupa.nr_echipe<<std::endl;
+}
 
 template<class T>
 void Cupa<T>::joaca()
@@ -80,4 +89,5 @@ std::ostream& operator<<(std::ostream& out,Cupa<T>& c)
     c.cupa_lista[0].echipa_nume();
     return out;
 }
+
 #endif // CUPA_H_INCLUDED

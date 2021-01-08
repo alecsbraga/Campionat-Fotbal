@@ -70,7 +70,9 @@ int main()
 
         cout<<cupa;
 
-        cout<<"------------------------------------------------"<<endl;
+        afisare(cupa);
+
+        cout<<endl<<"------------------------------------------------"<<endl;
 
     }
     catch (const ifstream::failure& e)
