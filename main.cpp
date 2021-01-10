@@ -68,6 +68,8 @@ int main()
 
         cout<<"------------------------------------------------"<<endl;
 
+        cupa.data_jucata();
+
         cout<<cupa;
 
         afisare(cupa);

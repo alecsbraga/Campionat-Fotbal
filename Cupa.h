@@ -10,12 +10,29 @@ template <class T>
 class Cupa
 {
 
-public:
     std::vector <Echipa> cupa_lista;
     int nr_echipe ;
     std::string nume_campionat;
+    T cupa;
+public:
+
+    void data_jucata()
+    {
+        std::cout<<"Meciurile au fost jucate pe data de ";
+        cupa.data_afis();
+    }
 
     void joaca();
+
+    void afisare_nr_echipe()
+    {
+        std::cout<<nr_echipe;
+    }
+
+    void afisare_nume_campionat()
+    {
+        std::cout<<nume_campionat;
+    }
 
     template<class U> friend std::istream& operator>>(std::istream& in, Cupa<U>& c);
 
@@ -26,8 +43,11 @@ public:
 
 template <class T>void afisare(T cupa)
 {
-    std::cout<<std::endl<<"Numarul total de echipe care au participat la "<<cupa.nume_campionat<<" a fost: ";
-    std::cout<<cupa.nr_echipe<<std::endl;
+    std::cout<<std::endl<<"Numarul total de echipe care au participat la ";
+    cupa.afisare_nume_campionat();
+    std::cout<<" a fost: ";
+    cupa.afisare_nr_echipe();
+    std::cout<<std::endl;
 }
 
 template<class T>
@@ -85,7 +105,7 @@ std::istream& operator>>(std::istream& in, Cupa<T>&  c)
 template<class T>
 std::ostream& operator<<(std::ostream& out,Cupa<T>& c)
 {
-    out<<"Castigatoarea: "<<c.nume_campionat<<" este ";
+    out<<"Castigatoarea "<<c.nume_campionat<<" este ";
     c.cupa_lista[0].echipa_nume();
     return out;
 }
